@@ -1,5 +1,19 @@
+from scripts import elimsolutions
 
-from scripts import gensollist
+def choose_solution():
+    while True:
+        solution_index = random.randint(0,1295)
+        if elimsolutions.still_possible[solution_index]:
+            return elimsolutions.all_solutions[solution_index]
 
-gensollist.generate()
-print(gensollist.possible_solutions)
+tried_solution = choose_solution()
+print("Try ", tried_solution
+
+while True:
+    whites = int(input("Whites (Input 9 to exit): "))
+    if whites == 9:
+        break
+    blacks = int(input("Blacks: "))
+    elimsolutions.grand_slam(tried_solution, blacks, whites)
+    tried_solution = choose_solution()
+    print("Try ", tried_solution)
