@@ -1,13 +1,17 @@
 from scripts import elimsolutions
+import random
+
 
 def choose_solution():
     while True:
-        solution_index = random.randint(0,1295)
-        if elimsolutions.still_possible[solution_index]:
+        solution_index = random.randint(0, 1295)
+        if elimsolutions.still_possible[solution_index] == 0:
             return elimsolutions.all_solutions[solution_index]
 
+
+elimsolutions.init()
 tried_solution = choose_solution()
-print("Try ", tried_solution
+print("Try ", tried_solution)
 
 while True:
     whites = int(input("Whites (Input 9 to exit): "))

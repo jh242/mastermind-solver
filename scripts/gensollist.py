@@ -1,11 +1,8 @@
 # Generate a list of possible solutions
 
-possible_solutions = []
-
 
 def generate():
-
-    global possible_solutions
+    possible_solutions = []
     current_construction = []
 
     for first_slot_color in range(1, 7):
@@ -18,3 +15,4 @@ def generate():
                     current_construction.append(fourth_slot_color)
                     possible_solutions.append(current_construction[:])
                     current_construction.clear()
+    return possible_solutions
