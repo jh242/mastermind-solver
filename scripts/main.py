@@ -1,4 +1,4 @@
-from scripts import elimsolutions
+from . import elimsolutions
 import random
 
 

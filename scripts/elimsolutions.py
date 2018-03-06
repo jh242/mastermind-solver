@@ -1,4 +1,4 @@
-from scripts import gensollist
+from . import gensollist
 
 all_solutions = []
 still_possible = []
