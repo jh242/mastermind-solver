@@ -1,4 +1,4 @@
-from . import gensollist
+from scripts import gensollist
 
 all_solutions = []
 still_possible = []
@@ -15,17 +15,19 @@ def init():
 
 
 def eliminate_whites(tried_solution, whites):
-    tried_solution_copy = tried_solution[:]
     for solution in all_solutions:
         matches = 0
+        tried_solution_copy = tried_solution[:]
         solution_copy = solution[:]
-        if still_possible[all_solutions.index(solution_copy)]:
+        if still_possible[all_solutions.index(solution_copy)] == 0:
+            for color in range(4):
+                if tried_solution_copy[color] == solution_copy[color]:
+                    tried_solution_copy[color] = -1
+                    solution_copy[color] = -2
             for tried_color in range(4):
                 for solution_color in range(4):
-                    if tried_solution_copy[tried_color] == solution_copy[solution_color] and tried_color == solution_color:
-                        tried_solution_copy[tried_color] = -1
-                        solution_copy[solution_color] = -2
-                    elif tried_solution_copy[tried_color] == solution_copy[solution_color] and tried_color != solution_color:
+                    if tried_solution_copy[tried_color] == solution_copy[
+                        solution_color] and tried_color != solution_color:
                         matches += 1
                         tried_solution_copy[tried_color] = -1
                         solution_copy[solution_color] = -2
@@ -38,7 +40,7 @@ def eliminate_blacks(tried_solution, blacks):
     for solution in all_solutions:
         solution_copy = solution[:]
         matches = 0
-        if still_possible[all_solutions.index(solution_copy)]:
+        if still_possible[all_solutions.index(solution_copy)] == 0:
             for color in range(4):
                 if tried_solution_copy[color] == solution_copy[color]:
                     matches += 1
